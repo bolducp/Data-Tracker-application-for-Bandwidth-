@@ -6,7 +6,7 @@ import bisect
 
 def open_and_read_files():
     try:
-        filename = raw_input("Insert file name")
+        filename = raw_input("Insert file name: ")
         with open(filename, 'rb') as csvfile:
             filelines = csv.reader(csvfile)
             file_text = []
@@ -20,7 +20,7 @@ def open_and_read_files():
 
 
 def make_list_of_specific_network_data_and_dates_only(file_text):
-    network = raw_input("Which network connection would you like to see data use for?")
+    network = raw_input("Which network connection would you like to see data use for?: ")
     unordered_list_of_usage = []
 
     for line in file_text:
@@ -36,7 +36,7 @@ def make_list_of_specific_network_data_and_dates_only(file_text):
 
 
 def get_list_of_usage(unordered_list_of_usage):
-    specific_dates = raw_input("Would you like to enter a specific date range? Type 'yes' or 'no'")
+    specific_dates = raw_input("Would you like to enter a specific date range? Type 'yes' or 'no': ")
 
     if specific_dates == "no" or specific_dates == "No":
         return all_dates_get_list_of_usage(unordered_list_of_usage)
@@ -56,8 +56,8 @@ def all_dates_get_list_of_usage(unordered_list_of_usage):
 def specific_dates_get_list_of_usage(unordered_list_of_usage):
     sorted_by_date_list = sorted(unordered_list_of_usage)
 
-    start_date = raw_input("Enter start date in yyyy-mm-dd format")
-    end_date = raw_input("Enter end date in yyyy-mm-dd format")
+    start_date = raw_input("Enter start date in yyyy-mm-dd format: ")
+    end_date = raw_input("Enter end date in yyyy-mm-dd format: ")
 
     indexes = [line[0] for line in sorted_by_date_list]
     most_recent_date_index = bisect.bisect_right(indexes, end_date)
